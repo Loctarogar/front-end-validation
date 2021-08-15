@@ -8,16 +8,35 @@ form.addEventListener("submit", function (e) {
   // Prevents form from being submitted
   e.preventDefault();
 
-  //
+  // Check are inputs empty
   checkIsEmpty([username, email, password, password2]);
+
+  // Check min/max length
+  checkLength(username, 4, 12);
+  checkLength(password, 8, 20);
+
+  // Check are passwords identical
+  checkIsIdentical(password, password2);
 });
 
 function checkIsEmpty(arr) {
   arr.forEach((element) => {
-    console.log(element);
+    if (element.value.length === "") {
+    }
+    console.log(`${element.id} is empty`);
   });
 }
 
-function checkLength(val) {}
+function checkLength(val, min, max) {
+  if (val.value.length < min) {
+    console.log(`${val.id} less than ${min}`);
+  } else if (val.value.length > max) {
+    console.log(`${val.id} longer than ${max}`);
+  }
+}
 
-function checkIsIdentical(password, password2) {}
+function checkIsIdentical(password, password2) {
+  if (password.value !== password2.value) {
+    console.log("pass != pass2");
+  }
+}
