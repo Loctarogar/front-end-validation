@@ -1,6 +1,6 @@
 const form = document.getElementById("form");
 const username = document.getElementById("username");
-const email = document.getElementById("username");
+const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
@@ -32,8 +32,10 @@ function checkIsEmpty(arr) {
 }
 
 function checkLength(val, min, max) {
+  let inputUnit = val.parentElement;
   if (val.value.length < min) {
-    console.log(`${val.id} less than ${min}`);
+    inputUnit.lastElementChild.innerText = `${val.id} less than ${min}`;
+    inputUnit.lastElementChild.style.visibility = "visible";
   } else if (val.value.length > max) {
     console.log(`${val.id} longer than ${max}`);
   }
@@ -41,6 +43,8 @@ function checkLength(val, min, max) {
 
 function checkIsIdentical(password, password2) {
   if (password.value !== password2.value) {
-    console.log("pass != pass2");
+    let inputUnit = password.parentElement;
+    inputUnit.lastElementChild.innerText = "Please Enter Identical Passwords";
+    inputUnit.lastElementChild.style.visibility = "visible";
   }
 }
