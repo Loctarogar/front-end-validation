@@ -4,6 +4,7 @@ const email = document.getElementById("username");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
+// Eventlistener form submit
 form.addEventListener("submit", function (e) {
   // Prevents form from being submitted
   e.preventDefault();
@@ -21,9 +22,12 @@ form.addEventListener("submit", function (e) {
 
 function checkIsEmpty(arr) {
   arr.forEach((element) => {
-    if (element.value.length === "") {
+    let inputUnit = element.parentElement;
+    if (element.value.length === 0) {
+      let capitalizedId = element.id[0].toUpperCase() + element.id.substring(1);
+      inputUnit.lastElementChild.innerText = `${capitalizedId} is empty`;
+      inputUnit.lastElementChild.style.visibility = "visible";
     }
-    console.log(`${element.id} is empty`);
   });
 }
 
