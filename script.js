@@ -48,3 +48,5 @@ function checkIsIdentical(password, password2) {
     inputUnit.lastElementChild.style.visibility = "visible";
   }
 }
+
+function showError(element, message) {}
