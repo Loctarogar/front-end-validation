@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap");
+
 :root {
   --body-color: #f9fafb;
   --white-color: #ffffff;
@@ -6,4 +8,59 @@
   --input-error-color: #e74c3c;
   --input-success-color: #2ecc71;
   --input-error-text-color: #ef867b;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Open Sans Condensed", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: var(--body-color);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+label {
+  display: block;
+}
+
+small {
+  display: block;
+  visibility: hidden;
+}
+
+input {
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
+  height: 2rem;
+  color: #8f8f8a;
+}
+
+button {
+  background: var(--button-color);
+  width: 100%;
+  padding: 1rem;
+  color: var(--white-color);
+  border: none;
+  border-radius: 4px;
+}
+
+#form {
+  width: 400px;
+  background-color: var(--white-color);
+  box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  padding: 3rem;
 }
