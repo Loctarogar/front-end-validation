@@ -7,9 +7,16 @@ const password2 = document.getElementById("password2");
 form.addEventListener("submit", function (e) {
   // Prevents form from being submitted
   e.preventDefault();
+
+  //
+  checkIsEmpty([username, email, password, password2]);
 });
 
-function checkIsEmpty(arr) {}
+function checkIsEmpty(arr) {
+  arr.forEach((element) => {
+    console.log(element);
+  });
+}
 
 function checkLength(val) {}
 
