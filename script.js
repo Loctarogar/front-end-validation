@@ -22,30 +22,31 @@ form.addEventListener("submit", function (e) {
 
 function checkIsEmpty(arr) {
   arr.forEach((element) => {
-    let inputUnit = element.parentElement;
+    // let inputUnit = element.parentElement;
     if (element.value.length === 0) {
-      showError(inputUnit, element, "is empty");
+      showError(element, "is empty");
     }
   });
 }
 
 function checkLength(val, min, max) {
-  let inputUnit = val.parentElement;
+  // let inputUnit = val.parentElement;
   if (val.value.length < min) {
-    showError(inputUnit, val, "less than");
+    showError(val, "less than");
   } else if (val.value.length > max) {
-    showError(inputUnit, val, "is too long");
+    showError(val, "is too long");
   }
 }
 
 function checkIsIdentical(password, password2) {
   if (password.value !== password2.value) {
-    let inputUnit = password.parentElement;
-    showError(inputUnit, password, "Please Enter Identical Passwords");
+    // let inputUnit = password.parentElement;
+    showError(password, "Please Enter Identical Passwords");
   }
 }
 
-function showError(inputUnit, element, errorMessage) {
+function showError(element, errorMessage) {
+  let inputUnit = element.parentElement;
   let capitalizedId = element.id[0].toUpperCase() + element.id.substring(1);
   inputUnit.lastElementChild.innerText = `${capitalizedId} ${errorMessage}`;
   inputUnit.lastElementChild.style.visibility = "visible";

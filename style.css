@@ -37,6 +37,7 @@ label {
 small {
   display: block;
   visibility: hidden;
+  color: var(--input-error-color);
 }
 
 input {
@@ -49,7 +50,15 @@ input {
 }
 
 input:focus {
+  border: 2px solid var(--border-color);
+}
+
+input.input-success {
   border: 2px solid var(--input-success-color);
+}
+
+input.input-error {
+  border: 2px solid var(--input-error-color);
 }
 
 button {
@@ -67,6 +76,5 @@ button {
   background-color: var(--white-color);
   box-shadow: 0 0 3px 2px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
-
   padding: 3rem;
 }
