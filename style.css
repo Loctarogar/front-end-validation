@@ -45,6 +45,11 @@ input {
   border: 1px solid var(--border-color);
   height: 2rem;
   color: #8f8f8a;
+  outline: var(--input-success-color);
+}
+
+input:focus {
+  border: 2px solid var(--input-success-color);
 }
 
 button {
