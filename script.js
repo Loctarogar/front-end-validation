@@ -16,7 +16,11 @@ form.addEventListener("submit", function (e) {
   checkIsIdentical(password, password2);
 
   // Check are inputs empty
-  checkIsEmpty([username, email, password, password2]);
+  checkIsEmpty([username, password, password2]);
+
+  // Email validation
+  validateEmail(email);
+  console.log("email - ", email);
 
   // Check min/max length
   checkLength(username, 4, 12);
@@ -35,11 +39,10 @@ function checkIsEmpty(arr) {
 
 function checkLength(val, min, max) {
   if (val.value.length < min) {
-    showMessage(val, "less than", inputError);
+    showMessage(val, "is too short", inputError);
   } else if (val.value.length > max) {
     showMessage(val, "is too long", inputError);
   } else {
-    console.log("success2");
     changeInputClass(val, inputSuccess);
   }
 }
@@ -48,8 +51,21 @@ function checkIsIdentical(password, password2) {
   if (password.value !== password2.value) {
     showMessage(password, "Please Enter Identical Passwords", inputError);
   } else {
-    console.log("success3");
     changeInputClass(password, inputSuccess);
+  }
+}
+
+function validateEmail(element) {
+  const re =
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  let email = element.value;
+  let inputUnit = element.parentElement;
+
+  console.log(email);
+  if (re.test(String(email).toLowerCase())) {
+    changeInputClass(element, inputSuccess);
+  } else {
+    showMessage(element, " please enter correct email", inputError);
   }
 }
 
