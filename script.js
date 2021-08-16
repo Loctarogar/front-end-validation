@@ -7,7 +7,7 @@ const password2 = document.getElementById("password2");
 const inputError = "input-error";
 const inputSuccess = "input-success";
 
-// Eventlistener form submit
+// Form submit eventlistener
 form.addEventListener("submit", function (e) {
   // Prevents form from being submitted
   e.preventDefault();
@@ -60,8 +60,6 @@ function validateEmail(element) {
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   let email = element.value;
   let inputUnit = element.parentElement;
-
-  console.log(email);
   if (re.test(String(email).toLowerCase())) {
     changeInputClass(element, inputSuccess);
   } else {
