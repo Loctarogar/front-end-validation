@@ -24,9 +24,7 @@ function checkIsEmpty(arr) {
   arr.forEach((element) => {
     let inputUnit = element.parentElement;
     if (element.value.length === 0) {
-      let capitalizedId = element.id[0].toUpperCase() + element.id.substring(1);
-      inputUnit.lastElementChild.innerText = `${capitalizedId} is empty`;
-      inputUnit.lastElementChild.style.visibility = "visible";
+      showError(inputUnit, element, "is empty");
     }
   });
 }
@@ -34,19 +32,21 @@ function checkIsEmpty(arr) {
 function checkLength(val, min, max) {
   let inputUnit = val.parentElement;
   if (val.value.length < min) {
-    inputUnit.lastElementChild.innerText = `${val.id} less than ${min}`;
-    inputUnit.lastElementChild.style.visibility = "visible";
+    showError(inputUnit, val, "less than");
   } else if (val.value.length > max) {
-    console.log(`${val.id} longer than ${max}`);
+    showError(inputUnit, val, "is too long");
   }
 }
 
 function checkIsIdentical(password, password2) {
   if (password.value !== password2.value) {
     let inputUnit = password.parentElement;
-    inputUnit.lastElementChild.innerText = "Please Enter Identical Passwords";
-    inputUnit.lastElementChild.style.visibility = "visible";
+    showError(inputUnit, password, "Please Enter Identical Passwords");
   }
 }
 
-function showError(element, message) {}
+function showError(inputUnit, element, errorMessage) {
+  let capitalizedId = element.id[0].toUpperCase() + element.id.substring(1);
+  inputUnit.lastElementChild.innerText = `${capitalizedId} ${errorMessage}`;
+  inputUnit.lastElementChild.style.visibility = "visible";
+}
