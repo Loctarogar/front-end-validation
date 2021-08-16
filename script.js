@@ -4,10 +4,16 @@ const email = document.getElementById("email");
 const password = document.getElementById("password");
 const password2 = document.getElementById("password2");
 
+const inputError = "input-error";
+const inputSuccess = "input-success";
+
 // Eventlistener form submit
 form.addEventListener("submit", function (e) {
   // Prevents form from being submitted
   e.preventDefault();
+
+  // Check are passwords identical
+  checkIsIdentical(password, password2);
 
   // Check are inputs empty
   checkIsEmpty([username, email, password, password2]);
@@ -15,39 +21,54 @@ form.addEventListener("submit", function (e) {
   // Check min/max length
   checkLength(username, 4, 12);
   checkLength(password, 8, 20);
-
-  // Check are passwords identical
-  checkIsIdentical(password, password2);
 });
 
 function checkIsEmpty(arr) {
   arr.forEach((element) => {
-    // let inputUnit = element.parentElement;
     if (element.value.length === 0) {
-      showError(element, "is empty");
+      showMessage(element, "is empty", inputError);
+    } else {
+      changeInputClass(element, inputSuccess);
     }
   });
 }
 
 function checkLength(val, min, max) {
-  // let inputUnit = val.parentElement;
   if (val.value.length < min) {
-    showError(val, "less than");
+    showMessage(val, "less than", inputError);
   } else if (val.value.length > max) {
-    showError(val, "is too long");
+    showMessage(val, "is too long", inputError);
+  } else {
+    console.log("success2");
+    changeInputClass(val, inputSuccess);
   }
 }
 
 function checkIsIdentical(password, password2) {
   if (password.value !== password2.value) {
-    // let inputUnit = password.parentElement;
-    showError(password, "Please Enter Identical Passwords");
+    showMessage(password, "Please Enter Identical Passwords", inputError);
+  } else {
+    console.log("success3");
+    changeInputClass(password, inputSuccess);
   }
 }
 
-function showError(element, errorMessage) {
+function showMessage(element, errorMessage, inputClass) {
   let inputUnit = element.parentElement;
   let capitalizedId = element.id[0].toUpperCase() + element.id.substring(1);
   inputUnit.lastElementChild.innerText = `${capitalizedId} ${errorMessage}`;
-  inputUnit.lastElementChild.style.visibility = "visible";
+  changeErrorTextVisibility(inputUnit, "visible");
+  changeInputClass(element, inputClass);
+}
+
+function changeInputClass(element, inputClass) {
+  let inputUnit = element.parentElement;
+  element.classList = inputClass;
+  if (inputClass == "input-success") {
+    changeErrorTextVisibility(inputUnit, "hidden");
+  }
+}
+
+function changeErrorTextVisibility(inputUnit, visibility) {
+  inputUnit.lastElementChild.style.visibility = visibility;
 }
